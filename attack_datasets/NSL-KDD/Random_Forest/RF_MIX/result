@@ -1,0 +1,18 @@
+basic
+tree number 195
+max depth is 20
+score is 0.9954214920549421
+Recall: 0.9954214920549421
+Precision: 0.9953946103459164
+F1 Score: 0.9953827859309565
+Average MCC: 0.9562427335176172
+
+augmented_smotenc
+tree number 119
+max depth is 20
+score is 0.9951072807253794
+Recall: 0.9951072807253794
+Precision: 0.9951232762764063
+F1 Score: 0.9951127242761509
+Average MCC: 0.9594160110916692
+
