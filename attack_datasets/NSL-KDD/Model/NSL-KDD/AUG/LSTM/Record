@@ -1,0 +1,74 @@
+Label MI ADASYN
+Test Loss: 0.0773
+Test Accuracy: 97.91
+Precision: 98.45%
+Recall: 97.91%
+F1 Score: 98.03%
+Average MCC: 79.38%
+True Discovery Rate: 91.79%
+
+Label MI SMOTE
+Test Loss: 0.0480
+Test Accuracy: 98.63
+Precision: 98.83%
+Recall: 98.63%
+F1 Score: 98.67%
+Average MCC: 82.86%
+True Discovery Rate: 88.47%
+
+Label PCA SMOTE
+Test Loss: 0.0539
+Test Accuracy: 98.37
+Precision: 98.64%
+Recall: 98.37%
+F1 Score: 98.44%
+Average MCC: 88.57%
+True Discovery Rate: 88.83%
+
+Label PCA ADASYN
+Test Loss: 0.0847
+Test Accuracy: 97.56
+Precision: 98.06%
+Recall: 97.56%
+F1 Score: 97.69%
+Average MCC: 86.78%
+True Discovery Rate: 88.18%
+
+one-hot PCA SMOTE
+Test Loss: 0.0509
+Test Accuracy: 98.46
+Precision: 98.74%
+Recall: 98.46%
+F1 Score: 98.54%
+Average MCC: 88.96%
+True Discovery Rate: 88.60%
+
+
+one-hot PCA ADASYN
+Test Loss: 0.0908
+Test Accuracy: 97.59
+Precision: 98.17%
+Recall: 97.59%
+F1 Score: 97.75%
+Average MCC: 86.22%
+True Discovery Rate: 84.95%
+
+one-hot MI SMOTE
+Test Loss: 0.0606
+Test Accuracy: 98.04
+Precision: 98.41%
+Recall: 98.04%
+F1 Score: 98.13%
+Average MCC: 74.50%
+True Discovery Rate: 92.29%
+
+one-hot MI ADASYN
+Test Loss: 0.0877
+Test Accuracy: 97.56
+Precision: 98.13%
+Recall: 97.56%
+F1 Score: 97.71%
+Average MCC: 73.58%
+True Discovery Rate: 91.03%
+
+

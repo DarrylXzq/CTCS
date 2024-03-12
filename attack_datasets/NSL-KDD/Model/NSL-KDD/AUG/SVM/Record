@@ -1,0 +1,54 @@
+one-hot MI_SMOTE
+训练用时：279.65274930000305
+accuracy is 93.95%
+Precision: 97.05%
+Recall: 93.95%
+F1 Score: 95.20%
+Average MCC: 72.07%
+True Discovery Rate: 68.28%
+
+one-hot MI_ADASYN
+训练用时：574.3470714092255
+accuracy is 92.39%
+Precision: 95.96%
+Recall: 92.39%
+F1 Score: 93.69%
+Average MCC: 69.07%
+True Discovery Rate: 65.10%
+
+one-hot PCA_SMOTE
+训练用时：922.2615103721619
+accuracy is 94.06%
+Precision: 96.49%
+Recall: 94.06%
+F1 Score: 95.05%
+Average MCC: 73.56%
+True Discovery Rate: 69.60%
+
+one-hot PCA_ADASYN
+训练用时：1535.221296787262
+accuracy is 91.15%
+Precision: 95.79%
+Recall: 91.15%
+F1 Score: 92.84%
+Average MCC: 67.20%
+True Discovery Rate: 62.97%
+
+Label MI SMOTE
+训练用时：205.72553372383118
+accuracy is 95.34%
+Precision: 97.38%
+Recall: 95.34%
+F1 Score: 96.17%
+Average MCC: 74.61%
+True Discovery Rate: 70.38%
+
+Label MI ADASYN
+训练用时：418.71393513679504
+accuracy is 94.00%
+Precision: 96.41%
+Recall: 94.00%
+F1 Score: 94.85%
+Average MCC: 72.47%
+True Discovery Rate: 67.67%
+
