@@ -1,71 +1,81 @@
-one-hot LDA_SMOTE
-训练用时：120.12239742279053
-accuracy is 98.59%
-Precision: 98.70%
-Recall: 98.59%
-F1 Score: 98.63%
-Average MCC: 84.94%
-True Discovery Rate: 81.72%
+label LDA_SMOTE
+accuracy is 97.85%
+Average Precision: 78.32%
+Average Recall: 87.85%
+Average F1 Score: 81.50%
+Average MCC: 81.59%
+Average False Acceptance Rate: 9.77%
 
-one-hot LDA_ADASYN
-训练用时：111.04115462303162
-accuracy is 98.31%
-Precision: 98.46%
-Recall: 98.31%
-F1 Score: 98.36%
-Average MCC: 84.11%
-True Discovery Rate: 80.82%
 
-one-hot MI_ADASYN
-训练用时：52.14294195175171
-accuracy is 99.39%
-Precision: 99.40%
-Recall: 99.39%
-F1 Score: 99.40%
-Average MCC: 89.23%
-True Discovery Rate: 88.85%
-
-one-hot MI_SMOTE
-训练用时：42.26452136039734
-accuracy is 99.40%
-Precision: 99.42%
-Recall: 99.40%
-F1 Score: 99.41%
-Average MCC: 89.26%
-True Discovery Rate: 88.41%
+label LDA_ADASYN
+accuracy is 97.95%
+Average Precision: 78.89%
+Average Recall: 88.60%
+Average F1 Score: 82.10%
+Average MCC: 82.25%
+Average False Acceptance Rate: 10.18%
 
 label PCA_SMOTE
-训练用时：214.41145944595337
 accuracy is 98.98%
-Precision: 99.02%
-Recall: 98.98%
-F1 Score: 99.00%
+Average Precision: 86.72%
+Average Recall: 90.60%
+Average F1 Score: 88.48%
 Average MCC: 88.25%
-True Discovery Rate: 86.72%
+Average False Acceptance Rate: 7.98%
 
 label PCA_ADASYN
-训练用时：264.32993817329407
 accuracy is 98.84%
-Precision: 98.90%
-Recall: 98.84%
-F1 Score: 98.87%
+Average Precision: 84.59%
+Average Recall: 89.98%
+Average F1 Score: 86.93%
 Average MCC: 86.75%
-True Discovery Rate: 84.59%
+Average False Acceptance Rate: 8.64%
 
 label MI_SMOTE
-训练用时：49.663132667541504
 accuracy is 99.49%
-Precision: 99.49%
-Recall: 99.49%
-F1 Score: 99.49%
+Average Precision: 93.23%
+Average Recall: 92.01%
+Average F1 Score: 92.58%
 Average MCC: 92.43%
-True Discovery Rate: 93.23%
+Average False Acceptance Rate: 8.56%
 
 label MI_ADASYN
-训练用时：60.00548791885376
 accuracy is 99.50%
-Precision: 99.51%
-Recall: 99.50%
-F1 Score: 99.50%
+Average Precision: 92.05%
+Average Recall: 92.14%
+Average F1 Score: 92.09%
 Average MCC: 91.94%
-True Discovery Rate: 92.05%
+Average False Acceptance Rate: 7.71%
+@@@@@
+
+one-hot LDA_SMOTE
+accuracy is 98.59%
+Average Precision: 81.72%
+Average Recall: 90.30%
+Average F1 Score: 84.78%
+Average MCC: 84.94%
+Average False Acceptance Rate: 7.13%
+
+one-hot LDA_ADASYN
+accuracy is 98.31%
+Average Precision: 80.82%
+Average Recall: 89.52%
+Average F1 Score: 84.11%
+Average MCC: 84.11%
+Average False Acceptance Rate: 7.99%
+
+one-hot MI_SMOTE
+accuracy is 99.40%
+Average Precision: 88.41%
+Average Recall: 90.56%
+Average F1 Score: 89.42%
+Average MCC: 89.26%
+Average False Acceptance Rate: 9.84%
+
+one-hot MI_ADASYN
+accuracy is 99.39%
+Average Precision: 88.85%
+Average Recall: 90.00%
+Average F1 Score: 89.41%
+Average MCC: 89.23%
+Average False Acceptance Rate: 9.96%
