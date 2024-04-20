@@ -13,7 +13,7 @@ class MainWindow(QMainWindow):
 
     def initUI(self):
         # Set the main window properties
-        self.setWindowTitle('2.6.16')
+        self.setWindowTitle('CTCS-Cyberthreat Cognitive System')
         self.setGeometry(100, 100, 1314, 768)
         self.setStyleSheet("background-color: #2c2c2c; color: #dcdcdc;")
 
