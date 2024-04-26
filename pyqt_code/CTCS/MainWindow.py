@@ -53,8 +53,8 @@ class MainWindow(QMainWindow):
         # 窗口大小调整
         self.resize(1400, 1075)
         # 设置窗口背景颜色
-        self.setStyleSheet("color: black;")
-        self.setStyleSheet("border: 5px solid #dcdcdc;")
+        # self.setStyleSheet("color: black;")
+        # self.setStyleSheet("border: 5px solid #dcdcdc;")
 
         # 创建 QStackedWidget
         self.stack_widget = QStackedWidget()
@@ -89,7 +89,7 @@ class MainWindow(QMainWindow):
 
         # 运行时间标签和定时器设置
         self.timer_label = QLabel("00:00:00")
-        font = QFont("Times New Roman", 12, QFont.Bold)
+        font = QFont("Times New Roman", 14, QFont.Bold)
         self.timer_label.setFont(font)
         self.timer_label.setStyleSheet("color: black;")
         button_layout.addWidget(self.timer_label)

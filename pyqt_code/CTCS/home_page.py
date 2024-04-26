@@ -92,7 +92,8 @@ class HomePage(QWidget):
         notification_label.setText("""
             <h2 style='color: #616161;'>💡<i>Notification</i></h2>
             <p>🔹This project and its code may not be used for any form of commercial sales or services.<br>
-            🔹The project must not be used as or embedded in any commercial product.<br></p>
+            🔹The project must not be used as or embedded in any commercial product.<br>
+             ⚠️Hold the mouse over the button to see the function❗❗❗<br></p>
             <h4 style='color: #616161;'>📧<i>Email: \nxiangzq.darryl@gmail.com<br></i></h4>
         """)
         notification_label.setStyleSheet(
