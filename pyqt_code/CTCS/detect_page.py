@@ -1,20 +1,28 @@
+import time
 import warnings
-
 import pandas as pd
-from PyQt5.QtCore import Qt, QSize, QThread, pyqtSignal
+from PyQt5.QtCore import Qt, QSize, QThread, pyqtSignal, QPoint, QPropertyAnimation, QEasingCurve
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
                              QPushButton, QLabel, QProgressBar, QTextEdit, QSpacerItem, QSizePolicy, QFrame, QComboBox,
                              QFileDialog, QMessageBox)
 from PyQt5.QtGui import QPixmap, QIcon, QMovie, QFont
 import os
+
+from openpyxl.styles import PatternFill
+from openpyxl.utils.dataframe import dataframe_to_rows
+from openpyxl.workbook import Workbook
+
 from model_hasher import compute_hash, nested_dict, add_model_hash
 from model_page import create_button
 import preprocess
-import pickle
 import numpy as np
 from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget
 from PyQt5.QtChart import QChart, QChartView, QPieSeries, QPieSlice
 from PyQt5.QtGui import QPainter
+from sklearn.exceptions import InconsistentVersionWarning
+import gc
+
+warnings.filterwarnings("ignore", category=InconsistentVersionWarning)
 
 
 def use_add_model_hash():
@@ -172,10 +180,8 @@ class WorkerThread(QThread):
         for filename in files:
             if filename.endswith(('.h5', '.pkl')):
                 file_path = os.path.join(self.directory, filename)
-                # print(f"Processing {file_path}...")  # 确认文件路径输出
                 try:
                     file_hash = compute_hash(file_path)
-                    # print(f"Hash computed: {file_hash}")  # 显示计算出的哈希值
                 except Exception as e:
                     print(f"Error computing hash for {file_path}: {e}")
                     continue
@@ -205,6 +211,7 @@ class DetectionThread(QThread):
 match_prep_model = []
 csv_file_path = ''
 error_messages = []
+report = ''
 
 
 def apply_preprocessing(data, steps):
@@ -221,6 +228,7 @@ def apply_preprocessing(data, steps):
 class DetectPage(QWidget):
     warning_signal = pyqtSignal(str, str)
     progress_signal = pyqtSignal(str, int)
+
     def __init__(self):
         super().__init__()
         detect_layout = QVBoxLayout()
@@ -260,15 +268,15 @@ class DetectPage(QWidget):
         choice_layout.addLayout(combo_layout)
         # ===================操作部分===================
         operate_layout = QHBoxLayout()
-        operate_layout.setContentsMargins(0, 30, 0, 30)  # This sets 10 pixels margin on the top and bottom
+        # operate_layout.setContentsMargins(0, 30, 0, 30)  # This sets 10 pixels margin on the top and bottom
 
         self.start_detection = create_button('resource/figure/start.png', 'Start Detection', self.start_detection_task)
         self.start_detection_thread = DetectionThread(self.check_variables_and_proceed)  # 创建线程实例
         self.start_detection_thread.finished.connect(self.on_detection_finished)  # 连接信号到完成处理函数
 
-        self.stop_detection = create_button('resource/figure/stop.png', 'Stop Detection', self.detection_stop)
-        self.stop_detection.setDisabled(True)  # 初始化时禁用停止按钮
-        self.create_report = create_button('resource/figure/report.png', 'Create Report', self.create_report)
+        # self.stop_detection = create_button('resource/figure/stop.png', 'Stop Detection', self.detection_stop)
+        # self.stop_detection.setDisabled(True)  # 初始化时禁用停止按钮
+        self.create_report = create_button('resource/figure/report.png', 'Show Report', self.show_report)
         self.create_report.setDisabled(True)  # 初始化时禁用报告按钮
         self.upload_csv = create_button('resource/figure/CSV.png', 'Upload CSV', self.upload_csv)
         self.upload_csv.setDisabled(False)
@@ -277,27 +285,32 @@ class DetectPage(QWidget):
         # 连接信号
         self.progress_signal.connect(self.update_progress)
 
-        spacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-        operate_layout.addSpacerItem(spacer)
-
-        # 创建显示GIF的标签
+        # 添加GIF动画
         self.gif_label = QLabel()
-        self.movie = QMovie(".gif")
+        self.movie = QMovie("./resource/figure/loading.gif")
         self.gif_label.setMovie(self.movie)
         self.movie.start()
+        self.gif_label.setScaledContents(True)
+        self.gif_label.setMaximumSize(150, 150)  # 根据实际GIF尺寸调整
 
-        # 创建显示消息的标签
-        self.message_label = QLabel("Readying the system...")
+        # 添加消息标签
+        self.message_label = QLabel("Waiting for model and CSV ...")
         self.message_label.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
+        self.message_label.setMaximumSize(750, 150)
+        self.message_label.setFont(QFont("Times New Roman", 16, QFont.Bold))
 
         # 添加到布局
         operate_layout.addWidget(self.gif_label)
         operate_layout.addWidget(self.message_label)
 
+        spacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        operate_layout.addSpacerItem(spacer)
+
         # 将按钮添加到布局中
-        operate_layout.addWidget(self.upload_csv)
+
         operate_layout.addWidget(self.create_report)
-        operate_layout.addWidget(self.stop_detection)
+        operate_layout.addWidget(self.upload_csv)
+        # operate_layout.addWidget(self.stop_detection)
         operate_layout.addWidget(self.start_detection)
 
         # ===================图表部分===================
@@ -311,6 +324,7 @@ class DetectPage(QWidget):
                     }
                 """)
         self.setup_chart()
+
         # ===================底部部分===================
         footer_layout = QHBoxLayout()
         self.progress_bar = QProgressBar()
@@ -334,8 +348,9 @@ class DetectPage(QWidget):
         self.start_detection.setDisabled(True)
         self.upload_csv.setDisabled(True)
         self.create_report.setDisabled(True)
-        # 准备图表视图
+        # # 准备图表视图
         self.setup_chart()
+        gc.collect()
         # 启动线程
         self.start_detection_thread.start()
 
@@ -399,7 +414,6 @@ class DetectPage(QWidget):
 
     def update_model_options(self):
         type_choice, encoding_choice, preprocessing_choice, augmentation_choice = self.get_combos()
-
         # Assume 'model_hashes' is available and initialized elsewhere in your code
         try:
             models = model_hashes[type_choice][encoding_choice][preprocessing_choice][augmentation_choice]
@@ -448,24 +462,87 @@ class DetectPage(QWidget):
         QMessageBox.warning(None, title, message)  # 在主线程中显示消息框
 
     def update_progress(self, message, value):
-        self.message_label.setText(message)
+        self.slide_message(message)
         self.progress_bar.setValue(value)
+
+    def slide_message(self, new_message):
+        # 当前位置，用于结束动画
+        final_position = self.message_label.pos()  # 获取当前位置作为动画结束位置
+
+        # 动画的初始位置（从当前位置的正上方一小段距离开始）
+        initial_position = QPoint(final_position.x(), final_position.y() - self.message_label.height() * 2)
+
+        # 更新标签文本
+        self.message_label.setText(new_message)
+        self.message_label.move(initial_position)  # 设置初始位置
+
+        # 创建动画对象
+        self.animation = QPropertyAnimation(self.message_label, b"pos")
+        self.animation.setDuration(500)  # 动画持续时间，单位为毫秒
+        self.animation.setStartValue(initial_position)
+        self.animation.setEndValue(final_position)  # 结束位置为当前位置
+        self.animation.setEasingCurve(QEasingCurve.OutBounce)  # 使用弹跳效果
+        self.animation.start()
+
+    def get_predicted_classes(self, probabilities):
+        # 获取每个样本的最大概率值的索引
+        predicted_indices = np.argmax(probabilities, axis=1)
+        return predicted_indices
+
+    def load_model_and_detect(self, path, input):
+        import os
+        _, ext = os.path.splitext(path)
+        if ext == '.h5':
+            from tensorflow.keras.models import load_model
+            X = np.expand_dims(input, axis=1)  # 在第二维（索引为 1）添加一个新的维度
+            loaded_model = load_model(path)
+            self.progress_signal.emit("Detecting ...", 50)
+            y_pred = loaded_model.predict(X)
+            from keras import backend as K
+            K.clear_session()
+            gc.collect()
+            y_pred = self.get_predicted_classes(y_pred)
+            time.sleep(5)
+            return y_pred
+
+        else:
+            import pickle
+            with open(path, 'rb') as file:
+                loaded_model = pickle.load(file)
+                self.progress_signal.emit("Detecting ...", 50)
+                y_pred = loaded_model.predict(input)
+                time.sleep(5)
+                return y_pred
 
     def detection_start(self, prep, path):
         # 创建新的文件路径
+        self.progress_signal.emit("Loading model and csv ...", 10)
+        time.sleep(3)
+        # 预处理
+        self.progress_signal.emit("Preprocessing ...", 30)
         data = apply_preprocessing(csv_file_path, prep[0])
+        time.sleep(5)
+        # 转换为numpy数组
         X = data.to_numpy()
-        with open(path, 'rb') as file:
-            with warnings.catch_warnings():
-                warnings.simplefilter("ignore")
-                loaded_model = pickle.load(file)
-        print("Loaded model from disk")
-        y_pred = loaded_model.predict(X)
+
+        # 加载模型并检测
+        y_pred = self.load_model_and_detect(path, X)
         order = {0: 'Normal', 1: 'DoS', 2: 'Probe', 3: 'R2L', 4: 'U2R'}
+
+        self.progress_signal.emit("Creating report ...", 70)
+        global report
+        report = self.add_predictions_to_csv(csv_file_path, y_pred, order)
+        time.sleep(2)
+
+        self.progress_signal.emit("Showing pie chart ...", 90)
+        time.sleep(2)
         self.show_results(y_pred, order)
+
+        self.progress_signal.emit("✨Detection completed! Waiting for operation...", 100)
         print('Detection over')
+
         # 检测完成后，重新启用按钮
-        self.stop_detection.setEnabled(False)
+        # self.stop_detection.setEnabled(False)
         self.create_report.setEnabled(True)
 
     def check_csv_format(self, file_path):
@@ -576,7 +653,7 @@ class DetectPage(QWidget):
             csv_is_valid = self.check_csv_format(csv_file_path)
 
             if hash_matches and csv_is_valid:
-                self.stop_detection.setDisabled(False)
+                # self.stop_detection.setDisabled(False)
                 prep = [model['preprocessing']]
                 self.detection_start(prep, new_path)
             else:
@@ -614,14 +691,76 @@ class DetectPage(QWidget):
             percentage = 100 * count / total
             label = f"{order.get(pred, 'Unknown')}: {percentage:.2f}% ({count})"
             slice = QPieSlice(label, count)
-            slice.setLabelFont(QFont("Times New Roman", 10))
             self.series.append(slice)
 
-    def detection_stop(self):
-        pass
+    # def detection_stop(self):
+    #     pass
 
-    def create_report(self):
-        pass
+    def add_predictions_to_csv(self, file_path, y_pred, order):
+
+        data_columns = ["duration", "protocol_type", "service", "flag", "src_bytes",
+                        "dst_bytes", "land", "wrong_fragment", "urgent", "hot", "num_failed_logins",
+                        "logged_in", "num_compromised", "root_shell", "su_attempted", "num_root",
+                        "num_file_creations", "num_shells", "num_access_files", "num_outbound_cmds",
+                        "is_host_login", "is_guest_login", "count", "srv_count", "serror_rate",
+                        "srv_serror_rate", "rerror_rate", "srv_rerror_rate", "same_srv_rate",
+                        "diff_srv_rate", "srv_diff_host_rate", "dst_host_count", "dst_host_srv_count",
+                        "dst_host_same_srv_rate", "dst_host_diff_srv_rate", "dst_host_same_src_port_rate",
+                        "dst_host_srv_diff_host_rate", "dst_host_serror_rate", "dst_host_srv_serror_rate",
+                        "dst_host_rerror_rate", "dst_host_srv_rerror_rate"]
+
+        try:
+            # 尝试读取CSV文件
+            df = pd.read_csv(file_path, names=data_columns, encoding='utf-8')
+        except UnicodeDecodeError:
+            return "Error: Unable to read CSV file. Please ensure it is a valid CSV file."
+
+        # 根据order将预测结果转换为标签
+        df['Prediction'] = [order[pred] for pred in y_pred]
+
+        # 调整列的顺序，确保'预测类型'在最前
+        column_order = ['Prediction'] + data_columns
+        df = df[column_order]
+
+        # 创建一个新的Excel工作簿和工作表
+        wb = Workbook()
+        ws = wb.active
+
+        # 将DataFrame的标题行和数据行添加到Excel工作表中
+        for r in dataframe_to_rows(df, index=False, header=True):
+            ws.append(r)
+
+        # 定义颜色
+        fill_colors = {
+            'Normal': PatternFill(start_color='90EE90', end_color='90EE90', fill_type='solid'),  # 浅绿色
+            'DoS': PatternFill(start_color='FFFF00', end_color='FFFF00', fill_type='solid'),  # 黄色
+            'Probe': PatternFill(start_color='FFA500', end_color='FFA500', fill_type='solid'),  # 橙色
+            'R2L': PatternFill(start_color='FFC0CB', end_color='FFC0CB', fill_type='solid'),  # 粉色
+            'U2R': PatternFill(start_color='FF0000', end_color='FF0000', fill_type='solid')  # 红色
+        }
+
+        # 应用颜色到'预测类型'列
+        pred_col_index = 1  # '预测类型'列在第一列
+        for row in range(2, ws.max_row + 1):  # 从第二行开始（跳过标题）
+            pred_value = ws.cell(row, pred_col_index).value
+            if pred_value in fill_colors:
+                ws.cell(row, pred_col_index).fill = fill_colors[pred_value]
+
+        # 保存Excel文件
+        new_file_path = file_path.replace('.csv', '_with_predictions.xlsx')
+        wb.save(new_file_path)
+
+        return new_file_path  # 返回新文件的路径
+
+    def show_report(self):
+        global report
+        if report:
+            try:
+                os.startfile(report)
+            except Exception as e:
+                print(f"Error opening report: {e}")
+        else:
+            QMessageBox.warning(self, "No Report", "No report available to display.")
 
     def upload_csv(self):
         global csv_file_path  # 声明全局变量

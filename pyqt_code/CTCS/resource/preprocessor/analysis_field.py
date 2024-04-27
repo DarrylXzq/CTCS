@@ -94,3 +94,4 @@ for col, col_type in column_details.items():
 for col in column_details.keys():
     stats = statistics.get(col, {})
     print(f'{col}: {stats}')
+
