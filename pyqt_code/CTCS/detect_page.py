@@ -338,8 +338,8 @@ class DetectPage(QWidget):
         # ===================添加到主布局===================
         detect_layout.addLayout(choice_layout, 1)
         detect_layout.addLayout(operate_layout, 3)
-        detect_layout.addWidget(self.chart_container, 5)
         detect_layout.addLayout(footer_layout, 1)
+        detect_layout.addWidget(self.chart_container, 5)
 
         self.setLayout(detect_layout)
 
