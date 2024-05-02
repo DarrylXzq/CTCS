@@ -1,0 +1,76 @@
+Label LDA SMOTE
+Test Loss: 0.1327
+Test Accuracy: 95.45
+Average Precision: 80.85%
+Average Recall: 80.98%
+Average F1 Score: 77.04%
+Average MCC: 77.54%
+Average False Acceptance Rate: 11.35%
+
+
+Label LDA ADASYN
+Test Loss: 0.2099
+Test Accuracy: 91.86
+Average Precision: 72.47%
+Average Recall: 77.13%
+Average F1 Score: 68.51%
+Average MCC: 69.08%
+Average False Acceptance Rate: 13.19%
+
+
+Label PCA SMOTE
+Test Loss: 0.0552
+Test Accuracy: 98.32
+Average Precision: 88.53%
+Average Recall: 89.22%
+Average F1 Score: 88.09%
+Average MCC: 87.98%
+Average False Acceptance Rate: 9.17%
+
+Label PCA ADASYN
+Test Loss: 0.0882
+Test Accuracy: 97.38
+Average Precision: 86.89%
+Average Recall: 88.99%
+Average F1 Score: 86.57%
+Average MCC: 86.48%
+Average False Acceptance Rate: 6.60%
+@@@@
+
+one-hot LDA SMOTE
+Test Loss: 0.0864
+Test Accuracy: 97.03
+Average Precision: 90.01%
+Average Recall: 81.40%
+Average F1 Score: 78.77%
+Average MCC: 80.85%
+Average False Acceptance Rate: 13.42%
+
+one-hot LDA ADASYN
+Test Loss: 0.1629
+Test Accuracy: 93.54
+Average Precision: 84.41%
+Average Recall: 79.08%
+Average F1 Score: 71.52%
+Average MCC: 73.89%
+Average False Acceptance Rate: 10.21%
+
+one-hot PCA SMOTE
+Test Loss: 0.0459
+Test Accuracy: 98.77
+Average Precision: 89.45%
+Average Recall: 90.83%
+Average F1 Score: 89.83%
+Average MCC: 89.62%
+Average False Acceptance Rate: 6.13%
+
+one-hot PCA ADASYN
+Test Loss: 0.0856
+Test Accuracy: 97.68
+Average Precision: 85.53%
+Average Recall: 90.56%
+Average F1 Score: 87.24%
+Average MCC: 86.95%
+Average False Acceptance Rate: 5.90%
+
+
