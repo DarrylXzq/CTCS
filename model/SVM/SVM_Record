@@ -1,0 +1,91 @@
+file_path_Mix_dataset_One_Hot
+训练用时：365.0470449924469
+accuracy is 96.38%
+Recall: 96.38%
+Precision: 98.02%
+F1 Score: 97.08%
+False Discovery Rate: 27.17%
+Average MCC: 76.48%
+
+file_path_Mix_dataset_One_Hot_LDA
+训练用时：34.489221811294556
+accuracy is 92.64%
+Recall: 92.64%
+Precision: 94.98%
+F1 Score: 93.57%
+False Discovery Rate: 32.54%
+Average MCC: 71.08%
+
+file_path_Mix_dataset_One_Hot_PCA
+训练用时：466.7772808074951
+accuracy is 95.04%
+Recall: 95.04%
+Precision: 97.35%
+F1 Score: 95.95%
+False Discovery Rate: 30.05%
+Average MCC: 74.36%
+
+file_path_Mix_dataset_One_Hot_MI
+训练用时：61.52189040184021
+accuracy is 93.51%
+Recall: 93.51%
+Precision: 96.91%
+F1 Score: 94.90%
+False Discovery Rate: 32.01%
+Average MCC: 71.81%
+
+file_path_Mix_dataset_One_Hot_Pearson
+训练用时：122.6526460647583
+accuracy is 81.40%
+Recall: 81.40%
+Precision: 91.62%
+F1 Score: 85.55%
+False Discovery Rate: 41.75%
+Average MCC: 56.82%%
+
+file_path_Mix_dataset_Label_Encoding
+训练用时：87.81796073913574
+accuracy is 95.84%
+Recall: 95.84%
+Precision: 97.64%
+F1 Score: 96.50%
+False Discovery Rate: 29.96%
+Average MCC: 74.95%
+
+file_path_Mix_dataset_Label_Encoding_LDA
+训练用时：55.423383951187134
+accuracy is 87.43%
+Recall: 87.43%
+Precision: 93.96%
+F1 Score: 89.91%
+False Discovery Rate: 38.39%
+Average MCC: 64.04%
+
+file_path_Mix_dataset_Label_Encoding_PCA
+训练用时：39.941110372543335
+accuracy is 92.90%
+Recall: 92.90%
+Precision: 97.07%
+F1 Score: 94.51%
+False Discovery Rate: 33.31%
+Average MCC: 70.30%
+
+file_path_Mix_dataset_Label_Encoding_MI
+训练用时：63.912551403045654
+accuracy is 94.46%
+Recall: 94.46%
+Precision: 97.08%
+F1 Score: 95.51%
+False Discovery Rate: 31.09%
+Average MCC: 73.14%
+
+file_path_Mix_dataset_Label_Encoding_Pearson
+训练用时：110.73224759101868
+accuracy is 74.01%
+Recall: 74.01%
+Precision: 93.48%
+F1 Score: 80.89%
+False Discovery Rate: 43.34%
+Average MCC: 52.79%
+
+
