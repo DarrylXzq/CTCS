@@ -198,10 +198,3 @@ class ModelPage(QWidget):
                                             f"Name: {model_name}\nSize: {file_size}\nAdded Time: {creation_time}")
                 except Exception as e:
                     QMessageBox.critical(self, "Error", f"Cannot copy the file: {str(e)}")
-
-
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    window = ModelPage()
-    window.show()
-    sys.exit(app.exec_())

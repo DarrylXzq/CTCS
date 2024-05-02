@@ -110,10 +110,3 @@ class HomePage(QWidget):
         homepage_layout.addLayout(poster_layout, 3)
         homepage_layout.addLayout(middle_layout, 6)
         self.setLayout(homepage_layout)
-
-
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    window = HomePage()
-    window.show()
-    sys.exit(app.exec_())

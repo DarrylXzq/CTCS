@@ -77,7 +77,10 @@ class IntelPage(QWidget):
             "https://www.zerodayinitiative.com/rss/published/",
             "https://rss.packetstormsecurity.com/",
             "https://www.exploit-db.com/rss.xml",
-            "https://feeds.feedburner.com/TheHackersNews"
+            "https://feeds.feedburner.com/TheHackersNews",
+            "https://www.csoonline.com/de/feed/all",
+            "https://www.darkreading.com/rss.xml",
+            "https://www.techrepublic.com/rssfeeds/topic/security/"
         ]
 
         self.start_collection = create_button('resource/figure/start.png', 'Start Detection',
@@ -124,18 +127,27 @@ class IntelPage(QWidget):
         self.zeroday_button = create_intel_button('resource/figure/zeroday.png', 'Zero Day Initiative')
         self.pss_button = create_intel_button('resource/figure/pss.png', 'Packet Storm Security')
         self.exploit_button = create_intel_button('resource/figure/exploit.png', 'Exploit Database')
-        self.TheHackersNews_button = create_intel_button('resource/figure/hacker.png', 'The Hackers News')
+        self.TheHackersNews_button = create_intel_button('resource/figure/thn.png', 'The Hackers News')
+        self.cso_button = create_intel_button('resource/figure/cso.png', 'CSO Online')
+        self.darkreading_button = create_intel_button('resource/figure/darkreading.png', 'Dark Reading')
+        self.techrepublic_button = create_intel_button('resource/figure/techrepublic.png', 'Tech Republic')
 
         self.zeroday_button.setEnabled(False)
         self.pss_button.setEnabled(False)
         self.exploit_button.setEnabled(False)
         self.TheHackersNews_button.setEnabled(False)
+        self.cso_button.setEnabled(False)
+        self.darkreading_button.setEnabled(False)
+        self.techrepublic_button.setEnabled(False)
 
         buttons = [
             self.zeroday_button,
             self.pss_button,
             self.exploit_button,
-            self.TheHackersNews_button
+            self.TheHackersNews_button,
+            self.cso_button,
+            self.darkreading_button,
+            self.techrepublic_button
         ]
 
         for i, button in enumerate(buttons):
@@ -246,6 +258,9 @@ class IntelPage(QWidget):
         self.pss_button.setEnabled(False)
         self.exploit_button.setEnabled(False)
         self.TheHackersNews_button.setEnabled(False)
+        self.cso_button.setEnabled(False)
+        self.darkreading_button.setEnabled(False)
+        self.techrepublic_button.setEnabled(False)
         # 启动线程
         self.start_collection_thread.start()
 
@@ -256,6 +271,9 @@ class IntelPage(QWidget):
         self.pss_button.setEnabled(True)
         self.exploit_button.setEnabled(True)
         self.TheHackersNews_button.setEnabled(True)
+        self.cso_button.setEnabled(True)
+        self.darkreading_button.setEnabled(True)
+        self.techrepublic_button.setEnabled(True)
 
     def display_warning(self, title, message):
         QMessageBox.warning(None, title, message)  # 在主线程中显示消息框
@@ -288,6 +306,6 @@ class IntelPage(QWidget):
         data = []
         for url in urls:
             feed = feedparser.parse(url)
-            entries = feed.entries[:25]
+            entries = feed.entries[:10]
             data.append(entries)
         return data

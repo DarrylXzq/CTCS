@@ -46,13 +46,3 @@ def add_model_hash(model_dict, model_type, encoding, preprocessing, augmentation
         'hash': hash_value,
         'preprocessing': prep_method
     }
-
-# if __name__ == "__main__":
-# process_model("path/to/your/model/file")
-
-# directory_path = r'D:\Download\zyFile\Cyberthreat_Cognitive_System\CTCS_Code\pyqt_code\CTCS\resource\NSL-KDD'  # 修改为你的文件夹路径
-# print_hash_tree(directory_path)
-# 初始化模型哈希字典
-# model_hashes = nested_dict()
-# # 示例添加模型哈希与预处理方式
-# print(json.dumps(model_hashes, indent=4))
