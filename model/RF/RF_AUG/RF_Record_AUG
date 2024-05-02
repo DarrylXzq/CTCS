@@ -1,0 +1,81 @@
+label LDA_SMOTE
+accuracy is 97.85%
+Average Precision: 78.32%
+Average Recall: 87.85%
+Average F1 Score: 81.50%
+Average MCC: 81.59%
+Average False Acceptance Rate: 9.77%
+
+
+label LDA_ADASYN
+accuracy is 97.95%
+Average Precision: 78.89%
+Average Recall: 88.60%
+Average F1 Score: 82.10%
+Average MCC: 82.25%
+Average False Acceptance Rate: 10.18%
+
+label PCA_SMOTE
+accuracy is 98.98%
+Average Precision: 86.72%
+Average Recall: 90.60%
+Average F1 Score: 88.48%
+Average MCC: 88.25%
+Average False Acceptance Rate: 7.98%
+
+label PCA_ADASYN
+accuracy is 98.84%
+Average Precision: 84.59%
+Average Recall: 89.98%
+Average F1 Score: 86.93%
+Average MCC: 86.75%
+Average False Acceptance Rate: 8.64%
+
+label MI_SMOTE
+accuracy is 99.49%
+Average Precision: 93.23%
+Average Recall: 92.01%
+Average F1 Score: 92.58%
+Average MCC: 92.43%
+Average False Acceptance Rate: 8.56%
+
+label MI_ADASYN
+accuracy is 99.50%
+Average Precision: 92.05%
+Average Recall: 92.14%
+Average F1 Score: 92.09%
+Average MCC: 91.94%
+Average False Acceptance Rate: 7.71%
+@@@@@
+
+one-hot LDA_SMOTE
+accuracy is 98.59%
+Average Precision: 81.72%
+Average Recall: 90.30%
+Average F1 Score: 84.78%
+Average MCC: 84.94%
+Average False Acceptance Rate: 7.13%
+
+one-hot LDA_ADASYN
+accuracy is 98.31%
+Average Precision: 80.82%
+Average Recall: 89.52%
+Average F1 Score: 84.11%
+Average MCC: 84.11%
+Average False Acceptance Rate: 7.99%
+
+one-hot MI_SMOTE
+accuracy is 99.40%
+Average Precision: 88.41%
+Average Recall: 90.56%
+Average F1 Score: 89.42%
+Average MCC: 89.26%
+Average False Acceptance Rate: 9.84%
+
+one-hot MI_ADASYN
+accuracy is 99.39%
+Average Precision: 88.85%
+Average Recall: 90.00%
+Average F1 Score: 89.41%
+Average MCC: 89.23%
+Average False Acceptance Rate: 9.96%
