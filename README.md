@@ -53,11 +53,11 @@
 
 ## ⚡️ Screenshots
 
-<img src="https://github.com/DarrylXzq/CTCS_Code/blob/master/interface_figure/home_page.png">
-<img src="https://github.com/DarrylXzq/CTCS_Code/blob/master/interface_figure/model_management.png">
-<img src="https://github.com/DarrylXzq/CTCS_Code/blob/master/interface_figure/model_detection.png">
-<img src="https://github.com/DarrylXzq/CTCS_Code/blob/master/interface_figure/detection_report.png">
-<img src="https://github.com/DarrylXzq/CTCS_Code/blob/master/interface_figure/intelligence_%20system.png">
+<img src="https://github.com/DarrylXzq/CTCS_Code/blob/master/interface_figure/home_page.png" width="500">
+<img src="https://github.com/DarrylXzq/CTCS_Code/blob/master/interface_figure/model_management.png" width="500">
+<img src="https://github.com/DarrylXzq/CTCS_Code/blob/master/interface_figure/model_detection.png" width="500">
+<img src="https://github.com/DarrylXzq/CTCS_Code/blob/master/interface_figure/detection_report.png" width="500">
+<img src="https://github.com/DarrylXzq/CTCS_Code/blob/master/interface_figure/intelligence_%20system.png" width="500">
 
 
 
