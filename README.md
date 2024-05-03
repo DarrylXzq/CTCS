@@ -7,6 +7,7 @@
 ![Conda](https://img.shields.io/badge/-Conda-orange.svg)
 ![TensorFlow](https://img.shields.io/badge/-TensorFlow-orange.svg)
 ![Scikit-Learn](https://img.shields.io/badge/-sklearn-orange.svg)
+![Numpy](https://img.shields.io/badge/-Numpy-blue.svg)
 ![Pandas](https://img.shields.io/badge/-Pandas-blue.svg)
 ![Matplotlib](https://img.shields.io/badge/-Matplotlib-blue.svg)
 ![Seaborn](https://img.shields.io/badge/-Seaborn-lightblue.svg)
