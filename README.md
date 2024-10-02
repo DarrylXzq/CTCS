@@ -61,7 +61,7 @@
   <img src="https://github.com/DarrylXzq/CTCS_Code/blob/master/interface_figure/intelligence_%20system.png" width="250">
   <img src="https://github.com/DarrylXzq/CTCS_Code/blob/master/interface_figure/detection_report.png" height="200">
   <a href="https://github.com/DarrylXzq/CTCS_Code/blob/master/interface_figure/video/run_video.mp4">
-    <img src="https://github.com/DarrylXzq/CTCS_Code/blob/master/pyqt_code/CTCS/resource/figure/start.png" alt="Watch the video">
+    <img src="https://github.com/DarrylXzq/CTCS_Code/blob/master/pyqt_code/CTCS/resource/figure/start.png" alt="Watch the video" height="170">
   </a>
 </div>
 
