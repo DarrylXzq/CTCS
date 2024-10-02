@@ -55,11 +55,11 @@
 > 2. Uploaded `CSV` files should conform to the `NSL-KDD dataset specifications`, otherwise a format error will be prompted [(see this table for specific ranges)](https://docs.google.com/spreadsheets/d/1oAx320Vo9Z6HrBrL6BcfLH6sh2zIk9EKCv2OlaMGmwY/edit?gid=0#gid=0).
 
 <div align="left">
-  <img src="https://github.com/DarrylXzq/CTCS_Code/blob/master/interface_figure/home_page.png" width="300">
-  <img src="https://github.com/DarrylXzq/CTCS_Code/blob/master/interface_figure/model_management.png" width="300">
-  <img src="https://github.com/DarrylXzq/CTCS_Code/blob/master/interface_figure/model_detection.png" width="300">
-  <img src="https://github.com/DarrylXzq/CTCS_Code/blob/master/interface_figure/intelligence_%20system.png" width="300">
-  <img src="https://github.com/DarrylXzq/CTCS_Code/blob/master/interface_figure/detection_report.png" height="240">
+  <img src="https://github.com/DarrylXzq/CTCS_Code/blob/master/interface_figure/home_page.png" width="250">
+  <img src="https://github.com/DarrylXzq/CTCS_Code/blob/master/interface_figure/model_management.png" width="250">
+  <img src="https://github.com/DarrylXzq/CTCS_Code/blob/master/interface_figure/model_detection.png" width="250">
+  <img src="https://github.com/DarrylXzq/CTCS_Code/blob/master/interface_figure/intelligence_%20system.png" width="250">
+  <img src="https://github.com/DarrylXzq/CTCS_Code/blob/master/interface_figure/detection_report.png" height="200">
   <a href="https://github.com/DarrylXzq/CTCS_Code/blob/master/interface_figure/video/run_video.mp4">
     <img src="https://github.com/DarrylXzq/CTCS_Code/blob/master/pyqt_code/CTCS/resource/figure/start.png" alt="Watch the video">
   </a>
