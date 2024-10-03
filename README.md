@@ -66,7 +66,7 @@
 </div>
 
 ##  Usage Restrictions
-> [!IMPORTANT]
+> [!WARNING]
 > 1. This project and its code may `not` be used for any form of `commercial sales or services`.
 > 2. The project must `not` be used as or embedded in any `commercial product`.
 
