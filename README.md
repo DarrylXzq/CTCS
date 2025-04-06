@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://github.com/DarrylXzq/CTCS_Code/blob/master/pyqt_code/CTCS/resource/figure/icon.png" width="180" height="180">
+  <img src="https://github.com/user-attachments/assets/a2c4dea4-49fb-4f7e-b5a7-d5f4d1dea124" width="180" height="180">
 </div>
 <br/>
 <div align="center">
